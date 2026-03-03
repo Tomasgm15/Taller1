@@ -11,6 +11,8 @@
 :root{
 --navy:#0B1C2D;
 --blue:#2563EB;
+--green:#16A34A;
+--gold:#F59E0B;
 --light:#F8FAFC;
 }
 
@@ -25,8 +27,13 @@ scroll-behavior:smooth;
 header{
 background:linear-gradient(135deg,var(--navy),#111827);
 color:white;
-padding:4rem 10%;
+padding:5rem 10%;
 text-align:center;
+}
+
+header h1{
+font-size:2.5rem;
+margin-bottom:10px;
 }
 
 nav{
@@ -38,6 +45,7 @@ padding:1rem;
 position:sticky;
 top:0;
 box-shadow:0 4px 12px rgba(0,0,0,0.05);
+z-index:1000;
 }
 
 nav a{
@@ -48,14 +56,40 @@ text-transform:uppercase;
 font-size:0.85rem;
 }
 
+.metrics{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:2rem 10%;
+background:white;
+box-shadow:0 4px 15px rgba(0,0,0,0.05);
+}
+
+.metric{
+background:#f1f5f9;
+padding:1.5rem;
+border-radius:14px;
+text-align:center;
+transition:transform 0.3s ease;
+}
+
+.metric:hover{
+transform:translateY(-5px);
+}
+
+.metric h3{
+margin:0;
+color:var(--navy);
+}
+
 .container{
 padding:4rem 12%;
 }
 
 section{
-margin-bottom:4rem;
+margin-bottom:5rem;
 opacity:0;
-transform:translateY(30px);
+transform:translateY(40px);
 transition:all 0.8s ease;
 }
 
@@ -72,7 +106,7 @@ padding-left:15px;
 .chart-container{
 background:white;
 padding:2rem;
-border-radius:12px;
+border-radius:16px;
 box-shadow:0 6px 20px rgba(0,0,0,0.05);
 margin-top:2rem;
 }
@@ -90,41 +124,52 @@ padding:2rem;
 
 <header>
 <h1>Zea & Betancourt Advisory</h1>
-<p>Fintech Structuring | Venture Capital Advisory</p>
+<p>Structured Finance | Venture Scaling | Treasury Management</p>
 </header>
 
 <nav>
-<a href="#originations">Originations</a>
-<a href="#profit">Profitability</a>
-<a href="#cash">Cash Flow</a>
+<a href="#stress">Stress Phase</a>
+<a href="#growth">Growth</a>
 <a href="#portfolio">Portfolio</a>
 </nav>
 
+<div class="metrics">
+<div class="metric">
+<h3>Capital Raised</h3>
+<p>$5,003,206</p>
+</div>
+<div class="metric">
+<h3>Portfolio Yield</h3>
+<p>9.1% Annual</p>
+</div>
+<div class="metric">
+<h3>Break-even</h3>
+<p>Month 19</p>
+</div>
+<div class="metric">
+<h3>Value at Month 60</h3>
+<p>$1,091,215</p>
+</div>
+</div>
+
 <div class="container">
 
-<section id="originations">
-<h2>Monthly Originations (USD)</h2>
+<section id="stress">
+<h2>Cash Flow Stress Phase (Month 0–18)</h2>
 <div class="chart-container">
-<canvas id="originChart"></canvas>
+<canvas id="shortChart"></canvas>
 </div>
 </section>
 
-<section id="profit">
-<h2>Net Income Evolution (USD)</h2>
+<section id="growth">
+<h2>Long-Term Value Creation (Month 0–60)</h2>
 <div class="chart-container">
-<canvas id="profitChart"></canvas>
-</div>
-</section>
-
-<section id="cash">
-<h2>Accumulated Cash Flow (USD)</h2>
-<div class="chart-container">
-<canvas id="cashChart"></canvas>
+<canvas id="longChart"></canvas>
 </div>
 </section>
 
 <section id="portfolio">
-<h2>Portfolio Cash Flow (USD)</h2>
+<h2>Treasury Portfolio Allocation</h2>
 <div class="chart-container">
 <canvas id="portfolioChart"></canvas>
 </div>
@@ -138,50 +183,94 @@ padding:2rem;
 
 <script>
 
-// Animación al hacer scroll
+// Scroll animation
 const sections = document.querySelectorAll("section");
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
 if(entry.isIntersecting){
 entry.target.classList.add("visible");
 }
 });
 });
-sections.forEach(section => observer.observe(section));
+sections.forEach(section=>observer.observe(section));
 
-// Datos
-const months = Array.from({length:18},(_,i)=>"M"+(i+1));
+// Data
+const cashFlow = [
+5003206,-471957,-505822,-541810,-93152,-98489,-104171,-110222,-116666,-123528,
+-130836,-138619,-146908,-162568,-179668,-198466,-212022,-226562,-242158,
+15819,20454,25431,30774,36511,42670,49168,56268,63892,72077,80864,
+90300,100341,111116,122678,135085,148399,162685,177899,194349,212002,
+230943,251269,273080,296485,321600,348549,377468,408499,441798,477414,
+515640,556667,600699,647958,698677,753111,811530,874226,941511,1013721,1091215
+];
 
-const originData = [457073,487162,519232,553413,589844,628674,670059,714169,761183,811292,864700,921623,988961,1061218,1138756,1221958,1311240,1407045];
+const months60 = Array.from({length:61},(_,i)=>"M"+i);
+const months18 = Array.from({length:19},(_,i)=>"M"+i);
 
-const profitData = [252478.74,246233.46,237471.81,409509.19,441073.89,475158.73,511972.08,551740.08,594708.23,641143.10,691334.16,745595.81,803530.11,865588.41,931884.98,1003696.03,1081102.22,1164545.79];
+const shortFlow = cashFlow.slice(0,19);
 
-const cashData = [5003206.30,-217645.17,-267960.89,-323663.07,266221.77,285837.29,306932.16,329620.60,354025.87,380280.97,408529.44,438926.18,471638.42,499430.41,528335.27,558184.29,596607.39,637601.34,681330.33];
+const breakEvenMonth = cashFlow.findIndex(v => v > 0);
 
-const portfolioData = [-457073,-487162,-519232,-69895,-74496,-79401,-84627,-90199,-96136,-102465,-109210,-116400,-130729,-146490,-163810,-175779,-188622,-202404];
+// Plugin para línea vertical de break-even
+const breakEvenPlugin = {
+id:'breakEvenLine',
+afterDraw(chart){
+const {ctx, chartArea:{top,bottom}, scales:{x}} = chart;
+ctx.save();
+ctx.strokeStyle = "#F59E0B";
+ctx.lineWidth = 2;
+const xPos = x.getPixelForValue(breakEvenMonth);
+ctx.beginPath();
+ctx.moveTo(xPos, top);
+ctx.lineTo(xPos, bottom);
+ctx.stroke();
+ctx.restore();
+}
+};
 
-// Gráficas
-new Chart(document.getElementById("originChart"),{
+// Chart 0-18
+new Chart(document.getElementById("shortChart"),{
 type:"line",
-data:{labels:months,datasets:[{label:"Originations",data:originData,borderColor:"#2563EB",fill:false,tension:0.3}]},
+data:{
+labels:months18,
+datasets:[{
+label:"Accumulated Cash Flow",
+data:shortFlow,
+borderColor:"#2563EB",
+tension:0.3,
+fill:false
+}]
+},
 options:{animation:{duration:2000}}
 });
 
-new Chart(document.getElementById("profitChart"),{
+// Chart 0-60
+new Chart(document.getElementById("longChart"),{
 type:"line",
-data:{labels:months,datasets:[{label:"Net Income",data:profitData,borderColor:"#16A34A",fill:false,tension:0.3}]},
-options:{animation:{duration:2000}}
+data:{
+labels:months60,
+datasets:[{
+label:"Accumulated Cash Flow",
+data:cashFlow,
+borderColor:"#16A34A",
+tension:0.3,
+fill:false
+}]
+},
+options:{animation:{duration:2500}},
+plugins:[breakEvenPlugin]
 });
 
-new Chart(document.getElementById("cashChart"),{
-type:"line",
-data:{labels:["M0",...months],datasets:[{label:"Accumulated Cash",data:cashData,borderColor:"#F59E0B",fill:false,tension:0.3}]},
-options:{animation:{duration:2000}}
-});
-
+// Portfolio Pie
 new Chart(document.getElementById("portfolioChart"),{
-type:"bar",
-data:{labels:months,datasets:[{label:"Portfolio Cash Flow",data:portfolioData,backgroundColor:"#DC2626"}]},
+type:"pie",
+data:{
+labels:["FICs (40%)","CDT 180d (40%)","CDT 360d (20%)"],
+datasets:[{
+data:[40,40,20],
+backgroundColor:["#2563EB","#16A34A","#F59E0B"]
+}]
+},
 options:{animation:{duration:2000}}
 });
 
