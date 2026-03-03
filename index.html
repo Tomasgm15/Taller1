@@ -13,6 +13,7 @@
 --green:#16A34A;
 --gold:#F59E0B;
 --light:#F8FAFC;
+--gray:#64748B;
 }
 
 body{
@@ -21,21 +22,9 @@ font-family:'Segoe UI',sans-serif;
 background:var(--light);
 color:#0f172a;
 scroll-behavior:smooth;
-overflow-x:hidden;
 }
 
-/* ===== ANIMATIONS ===== */
-.fade-up{
-opacity:0;
-transform:translateY(40px);
-transition:all 0.8s ease;
-}
-.fade-up.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-/* ===== NAV ===== */
+/* NAV */
 nav{
 background:white;
 display:flex;
@@ -48,121 +37,73 @@ box-shadow:0 4px 12px rgba(0,0,0,0.05);
 z-index:1000;
 }
 
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-font-weight:700;
-font-size:1.1rem;
-}
-
-.logo img{
-height:40px;
-}
-
-/* Puedes cambiar esta imagen por tu logo real */
-
 nav a{
 text-decoration:none;
 color:var(--navy);
 font-weight:600;
 margin-left:20px;
-transition:0.3s;
-}
-nav a:hover{
-color:var(--blue);
 }
 
-/* ===== BUTTONS ===== */
 .btn-primary{
 background:var(--blue);
 color:white;
-padding:12px 24px;
-border-radius:12px;
+padding:12px 22px;
+border-radius:10px;
 text-decoration:none;
 font-weight:600;
-transition:0.3s;
-display:inline-block;
-}
-.btn-primary:hover{
-transform:translateY(-3px);
-box-shadow:0 8px 20px rgba(37,99,235,0.4);
 }
 
 .btn-secondary{
 border:2px solid var(--blue);
-padding:10px 20px;
-border-radius:12px;
+padding:10px 18px;
+border-radius:10px;
 text-decoration:none;
 color:var(--blue);
 font-weight:600;
-transition:0.3s;
-}
-.btn-secondary:hover{
-background:var(--blue);
-color:white;
 }
 
-/* ===== HERO ===== */
+/* HERO */
 .hero{
 background:linear-gradient(135deg,var(--navy),#111827);
 color:white;
-padding:7rem 10%;
+padding:6rem 10%;
 text-align:center;
-position:relative;
-overflow:hidden;
 }
 
 .hero h1{
 font-size:2.8rem;
 margin-bottom:1rem;
-animation:fadeHero 1.2s ease;
 }
 
 .hero p{
 font-size:1.2rem;
+opacity:0.9;
 max-width:700px;
 margin:auto;
-opacity:0.9;
 }
 
-@keyframes fadeHero{
-from{opacity:0;transform:translateY(30px);}
-to{opacity:1;transform:translateY(0);}
-}
-
-/* ===== SECTIONS ===== */
-section{
-padding:5rem 12%;
-}
-
+/* SECTIONS */
+section{padding:5rem 12%;}
 .section-light{background:white;}
 .section-dark{background:#f1f5f9;}
+h2{margin-bottom:2rem;font-size:2rem;}
 
-h2{
-margin-bottom:2rem;
-font-size:2rem;
-}
-
-/* ===== GRID CARDS ===== */
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:30px;
 }
 
+/* CARD */
 .card{
 background:white;
 padding:2rem;
-border-radius:18px;
-box-shadow:0 10px 25px rgba(0,0,0,0.05);
-transition:0.3s;
-}
-.card:hover{
-transform:translateY(-8px);
+border-radius:16px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
 }
 
-/* ===== FOUNDERS ===== */
+/* FOUNDERS */
 .founder img{
 width:120px;
 height:120px;
@@ -171,16 +112,16 @@ object-fit:cover;
 margin-bottom:15px;
 }
 
-/* ===== SIMULATOR ===== */
+/* SIMULADOR */
 .sim-result{
 background:#e0f2fe;
 padding:1.5rem;
-border-radius:14px;
+border-radius:12px;
 margin-top:20px;
 font-weight:600;
 }
 
-/* ===== INVESTOR ===== */
+/* INVESTOR */
 .metrics{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -191,23 +132,20 @@ margin-bottom:3rem;
 .metric{
 background:white;
 padding:1.5rem;
-border-radius:16px;
+border-radius:14px;
 text-align:center;
-box-shadow:0 10px 25px rgba(0,0,0,0.05);
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
 }
 
 .chart-container{
 background:white;
 padding:2rem;
-border-radius:18px;
-box-shadow:0 10px 25px rgba(0,0,0,0.05);
+border-radius:16px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
 margin-bottom:3rem;
 }
 
-.small-chart{
-max-width:420px;
-margin:auto;
-}
+.small-chart{max-width:420px;margin:auto;}
 
 footer{
 background:var(--navy);
@@ -221,10 +159,7 @@ padding:2rem;
 <body>
 
 <nav>
-<div class="logo">
-<img src="https://via.placeholder.com/120x40?text=MST+Logo" alt="Logo MST">
-<span>MST Factoring</span>
-</div>
+<strong>MST Factoring</strong>
 <div>
 <a href="#beneficios">Beneficios</a>
 <a href="#simulador">Simulador</a>
@@ -242,30 +177,30 @@ padding:2rem;
 </section>
 
 <!-- BENEFICIOS -->
-<section id="beneficios" class="section-light fade-up">
+<section id="beneficios" class="section-light">
 <h2>¿Por qué MST Factoring?</h2>
 <div class="grid">
 <div class="card">
 <h3>Hasta 85% de anticipo</h3>
-<p>Capital de trabajo inmediato.</p>
+<p>Convierte cuentas por cobrar en capital de trabajo inmediato.</p>
 </div>
 <div class="card">
 <h3>Especialistas en transporte</h3>
-<p>Conocemos la dinámica logística.</p>
+<p>Entendemos la dinámica del sector logístico.</p>
 </div>
 <div class="card">
 <h3>No es crédito</h3>
-<p>No aumenta tu endeudamiento.</p>
+<p>No incrementa tu endeudamiento financiero.</p>
 </div>
 <div class="card">
 <h3>Desembolso rápido</h3>
-<p>24–48 horas.</p>
+<p>Recibe tu dinero en 24–48 horas.</p>
 </div>
 </div>
 </section>
 
 <!-- SIMULADOR -->
-<section id="simulador" class="section-dark fade-up">
+<section id="simulador" class="section-dark">
 <h2>Simula tu anticipo</h2>
 <div class="card" style="max-width:500px;">
 <input type="number" id="valorFactura" placeholder="Valor factura (USD)" style="width:100%;padding:10px;margin-bottom:10px;">
@@ -281,29 +216,29 @@ padding:2rem;
 </section>
 
 <!-- EQUIPO -->
-<section id="equipo" class="section-light fade-up">
+<section id="equipo" class="section-light">
 <h2>Socios Fundadores</h2>
 <div class="grid">
 <div class="card founder">
 <img src="https://randomuser.me/api/portraits/men/32.jpg">
 <h3>Miguel</h3>
-<p>Estructuración financiera y riesgo.</p>
+<p>Estructuración financiera y análisis de riesgo.</p>
 </div>
 <div class="card founder">
 <img src="https://randomuser.me/api/portraits/women/44.jpg">
 <h3>Sofía</h3>
-<p>Operaciones y sector transporte.</p>
+<p>Experiencia en operaciones y sector transporte.</p>
 </div>
 <div class="card founder">
 <img src="https://randomuser.me/api/portraits/men/75.jpg">
 <h3>Tomás</h3>
-<p>Estrategia y crecimiento.</p>
+<p>Estrategia y crecimiento empresarial.</p>
 </div>
 </div>
 </section>
 
 <!-- INVERSIONISTAS -->
-<section id="inversionistas" class="section-dark fade-up">
+<section id="inversionistas" class="section-dark">
 <h2>Información para inversionistas</h2>
 
 <div class="metrics">
@@ -328,26 +263,18 @@ padding:2rem;
 </footer>
 
 <script>
-// Scroll animation
-const faders=document.querySelectorAll('.fade-up');
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add('visible');
-}
-});
-});
-faders.forEach(el=>observer.observe(el));
-
-// Simulador
+// SIMULADOR
 function calcular(){
 let valor=parseFloat(document.getElementById("valorFactura").value);
 let plazo=parseInt(document.getElementById("plazo").value);
+
 if(!valor){alert("Ingresa un valor válido");return;}
+
 let anticipo=valor*0.85;
-let tasa=0.02;
+let tasa=0.02; // 2% mensual ejemplo
 let costo=valor*(tasa*(plazo/30));
 let recibeFinal=valor-costo;
+
 document.getElementById("resultado").style.display="block";
 document.getElementById("resultado").innerHTML=
 "Recibes hoy: $" + anticipo.toFixed(2) +
@@ -355,7 +282,7 @@ document.getElementById("resultado").innerHTML=
 "<br>Valor neto final: $" + recibeFinal.toFixed(2);
 }
 
-// Gráficas
+// GRÁFICAS
 const cashFlow=[5003206,-471957,-505822,-541810,-93152,-98489,-104171,-110222,-116666,-123528,-130836,-138619,-146908,-162568,-179668,-198466,-212022,-226562,-242158,15819,20454,25431,30774,36511,42670,49168,56268,63892,72077,80864,90300,100341,111116,122678,135085,148399,162685,177899,194349,212002,230943,251269,273080,296485,321600,348549,377468,408499,441798,477414,515640,556667,600699,647958,698677,753111,811530,874226,941511,1013721,1091215];
 const months60=Array.from({length:61},(_,i)=>"M"+i);
 
@@ -367,8 +294,10 @@ options:{animation:{duration:2500}}
 
 new Chart(document.getElementById("portfolioChart"),{
 type:"pie",
-data:{labels:["FICs (40%)","CDT 180d (40%)","CDT 360d (20%)"],
-datasets:[{data:[40,40,20],backgroundColor:["#2563EB","#16A34A","#F59E0B"]}]},
+data:{
+labels:["FICs (40%)","CDT 180d (40%)","CDT 360d (20%)"],
+datasets:[{data:[40,40,20],backgroundColor:["#2563EB","#16A34A","#F59E0B"]}]
+},
 options:{animation:{duration:2000}}
 });
 </script>
