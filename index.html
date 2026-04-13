@@ -1,250 +1,800 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MST Capital</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MST Group - Factoring & Wealthtech</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<style>
-:root{
---navy:#0B1C2D;
---blue:#2563EB;
---green:#16A34A;
---gold:#F59E0B;
---light:#F8FAFC;
-}
+    <style>
+        :root{
+            --navy:#0B1C2D;
+            --blue:#2563EB;
+            --green:#16A34A;
+            --gold:#F59E0B;
+            --light:#F8FAFC;
+        }
 
-body{
-margin:0;
-font-family:'Segoe UI',sans-serif;
-background:var(--light);
-color:#0f172a;
-scroll-behavior:smooth;
-overflow-x:hidden;
-}
+        body{
+            margin:0;
+            font-family:'Segoe UI',sans-serif;
+            background:var(--light);
+            color:#0f172a;
+            scroll-behavior:smooth;
+            overflow-x:hidden;
+        }
+        
+        ::selection{
+          background: var(--blue);
+          color: white;
+        }
 
-/* NAV */
-nav{
-background:white;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:1rem 8%;
-position:sticky;
-top:0;
-box-shadow:0 4px 12px rgba(0,0,0,0.05);
-z-index:1000;
-}
+        /* ===== ANIMATIONS ===== */
+        .fade-up{
+          opacity:0;
+          transform:translateY(50px);
+          transition:all 1s ease;
+        }
+        .fade-up.visible{
+            opacity:1;
+            transform:translateY(0);
+        }
 
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-font-weight:700;
-}
+        /* ===== NAV ===== */
+        nav{
+            background:white;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:1rem 8%;
+            position:sticky;
+            top:0;
+            box-shadow:0 4px 12px rgba(0,0,0,0.05);
+            z-index:1000;
+            backdrop-filter: blur(10px);
+        }
 
-.logo img{
-height:45px;
-}
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            font-weight:700;
+            font-size:1.1rem;
+        }
 
-nav a{
-text-decoration:none;
-color:var(--navy);
-font-weight:600;
-margin-left:20px;
-}
+        .logo img{
+            height:45px;
+            max-height:45px;
+            width:auto;
+            display:block;
+        }
 
-.btn-primary{
-background:var(--blue);
-color:white;
-padding:12px 24px;
-border-radius:12px;
-text-decoration:none;
-font-weight:600;
-display:inline-block;
-}
+        nav a{
+            text-decoration:none;
+            color:var(--navy);
+            font-weight:600;
+            margin-left:20px;
+            transition:0.3s;
+        }
+        nav a:hover{
+            color:var(--blue);
+        }
 
-section{
-padding:5rem 10%;
-}
+        /* ===== BUTTONS ===== */
 
-.hero{
-background:linear-gradient(135deg,var(--navy),#111827);
-color:white;
-text-align:center;
-padding:6rem 10%;
-}
+        .btn-primary{
+        background:linear-gradient(135deg,#2563EB,#1D4ED8);
+        color:white;
+        padding:12px 24px;
+        border-radius:12px;
+        text-decoration:none;
+        font-weight:600;
+        transition:all 0.3s ease;
+        display:inline-block;
+        border:none;
+        cursor:pointer;
+        }
+        
+        .btn-primary:hover{
+        transform:translateY(-3px) scale(1.02);
+        box-shadow:0 10px 25px rgba(37,99,235,0.4);
+        }
+        
+        .btn-secondary{
+        border:2px solid var(--blue);
+        padding:10px 20px;
+        border-radius:12px;
+        text-decoration:none;
+        color:var(--blue);
+        font-weight:600;
+        transition:all 0.3s ease;
+        display:inline-block;
+        cursor:pointer;
+        }
+        
+        .btn-secondary:hover{
+        background:var(--blue);
+        color:white;
+        transform:translateY(-2px);
+        }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
+        /* ===== HERO ===== */
+        .hero{
+            background:linear-gradient(135deg,var(--navy),#111827);
+            color:white;
+            padding:7rem 10%;
+            text-align:center;
+            position:relative;
+            overflow:hidden;
+        }
 
-.card{
-background:white;
-padding:2rem;
-border-radius:18px;
-box-shadow:0 10px 25px rgba(0,0,0,0.05);
-}
+        .hero h1{
+            font-size:2.8rem;
+            margin-bottom:1rem;
+            animation:fadeHero 1.2s ease;
+        }
 
-.section-dark{background:#f1f5f9;}
+        .hero p{
+            font-size:1.2rem;
+            max-width:700px;
+            margin:auto;
+            opacity:0.9;
+        }
 
-.sim-result{
-background:#e0f2fe;
-padding:1rem;
-margin-top:15px;
-border-radius:10px;
-}
+        @keyframes fadeHero{
+            from{opacity:0;transform:translateY(30px);}
+            to{opacity:1;transform:translateY(0);}
+        }
 
-footer{
-background:var(--navy);
-color:white;
-text-align:center;
-padding:2rem;
-}
-</style>
+        /* ===== SECTIONS ===== */
+        section{
+          padding:6rem 12%;
+        }
+
+        .section-light{background:white;}
+        .section-dark{background:#f1f5f9;}
+
+        h2{
+          margin-bottom:2rem;
+          font-size:2.2rem;
+          font-weight:700;
+          letter-spacing:-0.5px;
+        }
+        /* ===== GRID CARDS ===== */
+        .grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:30px;
+        }
+
+        .card{
+          background:white;
+          padding:2rem;
+          border-radius:18px;
+          box-shadow:0 10px 25px rgba(0,0,0,0.05);
+          transition:all 0.3s ease;
+          border:1px solid #eef2f7;
+        }
+        
+        .card:hover{
+          transform:translateY(-8px) scale(1.01);
+          box-shadow:0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        /* ===== FOUNDERS ===== */
+        .founder img{
+            width:120px;
+            height:120px;
+            border-radius:50%;
+            object-fit:cover;
+            margin-bottom:15px;
+        }
+
+        /* ===== SIMULATOR ===== */
+        .sim-result{
+            background:#e0f2fe;
+            padding:1.5rem;
+            border-radius:14px;
+            margin-top:20px;
+            font-weight:600;
+        }
+
+        /* ===== INVESTOR ===== */
+        .metrics{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+            gap:20px;
+            margin-bottom:3rem;
+        }
+
+        .metric{
+            background:white;
+            padding:1.5rem;
+            border-radius:16px;
+            text-align:center;
+            box-shadow:0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .chart-container{
+            background:white;
+            padding:2rem;
+            border-radius:18px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom:3rem;
+        }
+
+        .small-chart{
+            max-width:420px;
+            margin:auto;
+        }
+
+        footer{
+            background:var(--navy);
+            color:white;
+            text-align:center;
+            padding:2rem;
+        }
+    </style>
 </head>
 
 <body>
 
-<nav>
-<div class="logo">
-<img src="Logo.jpeg">
-<span>MST Capital</span>
-</div>
-<div>
-<a href="#factoring">Factoring</a>
-<a href="#wealthtech">Wealthtech</a>
-<a href="#portafolios">Portafolios</a>
-<a href="#tokenizacion">Tokenización</a>
-<a href="#modelo">Modelo</a>
-<a href="#contacto">Contacto</a>
-</div>
-</nav>
+    <nav>
+        <div class="logo">
+            <img src="Logo.jpeg" alt="Logo MST">
+            <span>MST Group</span>
+        </div>
+        <div>
+            <a href="#factoring">Factoring</a>
+            <a href="#roboadvisor">Roboadvisor</a>
+            <a href="#tokenizacion">Tokenización</a>
+            <a href="#simulador-wealth">Simuladores</a>
+            <a href="#equipo">Equipo</a>
+            <a href="#inversionistas" class="btn-secondary">Inversionistas</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </nav>
 
-<!-- HERO -->
-<section class="hero">
-<h1>Liquidez + Inversión en una sola plataforma</h1>
-<p>MST Capital integra soluciones de factoring con inversión en activos tradicionales y tokenizados.</p>
-<br>
-<a href="#portafolios" class="btn-primary">Explorar inversiones</a>
-</section>
+    <section class="hero">
+        <h1>Soluciones Financieras: Factoring & Wealthtech</h1>
+        <p>Liquidez inmediata para PYMEs del sector transporte y acceso democratizado a portafolios de inversión mediante tecnología blockchain y tokenización.</p>
+        <br>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <a href="#factoring" class="btn-primary">Servicios de Factoring</a>
+            <a href="#roboadvisor" class="btn-secondary" style="color: white; border-color: white;">Invertir en Wealthtech</a>
+        </div>
+    </section>
+    <section id="optimizacion" class="section-light fade-up">
+    <h2>Construcción de Portafolios Óptimos</h2>
+    
+    <p style="max-width:800px;">
+    Nuestros portafolios se construyen utilizando la <strong>Teoría Moderna de Portafolio</strong>, 
+    maximizando el ratio de Sharpe para obtener la mejor relación riesgo-retorno. 
+    La <strong>Frontera Eficiente</strong> representa todas las combinaciones óptimas de activos, 
+    mientras que la <strong>Capital Market Line (CML)</strong> define el portafolio tangente óptimo.
+    </p>
+    
+    <div style="text-align:center;margin-top:40px;">
+    <img src="frontera.png" style="max-width:850px;width:100%;border-radius:18px;box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+    </div>
+    
+    <div class="grid" style="margin-top:40px;">
+    <div class="card">
+    <h3>Optimización</h3>
+    <p>Se evaluaron múltiples combinaciones de activos (ETFs) para construir la frontera eficiente.</p>
+    </div>
+    
+    <div class="card">
+    <h3>Portafolio Tangente</h3>
+    <p>El portafolio moderado se aproxima al máximo Sharpe Ratio sobre la CML.</p>
+    </div>
+    
+    <div class="card">
+    <h3>Diversificación</h3>
+    <p>Se combinan activos de renta fija, renta variable y commodities para reducir riesgo.</p>
+    </div>
+    </div>
+    
+    </section>
+    <section id="roboadvisor" class="section-light fade-up">
+        <h2>Wealthtech: Portafolios de Inversión (Roboadvisor)</h2>
+        <p style="margin-bottom: 2rem;">Acceso automatizado a portafolios diversificados mediante la compra de fracciones de ETFs. Estrategia de inversión pasiva optimizada en la Frontera Eficiente.</p>
+        
+        <div class="grid">
+            <div class="card" style="border-top: 4px solid #16A34A;">
+                <h3 style="color: #16A34A; margin-top: 0;">Escudo Protector</h3>
+                <p><strong>Perfil Conservador</strong></p>
+                <p style="font-size: 0.9rem; color: #64748B;">Retorno Esperado: <strong>7.2%</strong> | Volatilidad: <strong>7.6%</strong> | Sharpe: <strong>0.70</strong></p>
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+                <p style="margin-bottom: 10px; font-weight: 600;">Composición del Portafolio:</p>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; line-height: 1.6;">
+                    <li>🟢 <strong>30.0%</strong> IEF (Bonos del Tesoro)</li>
+                    <li>🔵 <strong>24.6%</strong> SPY (S&P 500)</li>
+                    <li>🔴 <strong>23.3%</strong> GLD (Oro)</li>
+                    <li>🟠 <strong>22.1%</strong> LQD (Bonos Corporativos)</li>
+                </ul>
+            </div>
 
-<!-- FACTORING -->
-<section id="factoring">
-<h2>Factoring para PYMEs</h2>
-<div class="grid">
-<div class="card"><h3>Liquidez inmediata</h3><p>Anticipamos hasta el 85% de tus facturas.</p></div>
-<div class="card"><h3>Sin deuda</h3><p>No incrementa tu endeudamiento.</p></div>
-<div class="card"><h3>Rápido</h3><p>Desembolso en 24-48 horas.</p></div>
-</div>
-</section>
+            <div class="card" style="border-top: 4px solid #2563EB;">
+                <h3 style="color: #2563EB; margin-top: 0;">Ruta Balanceada</h3>
+                <p><strong>Perfil Moderado</strong></p>
+                <p style="font-size: 0.9rem; color: #64748B;">Retorno Esperado: <strong>9.3%</strong> | Volatilidad: <strong>8.8%</strong> | Sharpe: <strong>0.85</strong></p>
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+                <p style="margin-bottom: 10px; font-weight: 600;">Composición del Portafolio:</p>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; line-height: 1.6;">
+                    <li>🔵 <strong>30.0%</strong> SPY (S&P 500)</li>
+                    <li>🟢 <strong>30.0%</strong> GLD (Oro)</li>
+                    <li>🟠 <strong>25.9%</strong> IEF (Bonos del Tesoro)</li>
+                    <li>🔴 <strong>14.1%</strong> VEA (Mercados Desarrollados)</li>
+                </ul>
+            </div>
 
-<!-- WEALTHTECH -->
-<section id="wealthtech" class="section-dark">
-<h2>Plataforma Wealthtech</h2>
-<div class="grid">
-<div class="card"><h3>Robo-Advisor</h3><p>Portafolios optimizados con ETFs.</p></div>
-<div class="card"><h3>Tokenización</h3><p>Inversión en activos fraccionados.</p></div>
-<div class="card"><h3>Blockchain</h3><p>Construido sobre Polygon.</p></div>
-</div>
-</section>
+            <div class="card" style="border-top: 4px solid #EF4444;">
+                <h3 style="color: #EF4444; margin-top: 0;">Impulso Máximo</h3>
+                <p><strong>Perfil Agresivo</strong></p>
+                <p style="font-size: 0.9rem; color: #64748B;">Retorno Esperado: <strong>10.1%</strong> | Volatilidad: <strong>9.9%</strong> | Sharpe: <strong>0.84</strong></p>
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+                <p style="margin-bottom: 10px; font-weight: 600;">Composición del Portafolio:</p>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; line-height: 1.6;">
+                    <li>🟢 <strong>30.0%</strong> GLD (Oro)</li>
+                    <li>🔵 <strong>30.0%</strong> SPY (S&P 500)</li>
+                    <li>🔴 <strong>24.6%</strong> VEA (Mercados Desarrollados)</li>
+                    <li>🟠 <strong>15.4%</strong> IEF (Bonos del Tesoro)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-<!-- PORTAFOLIOS -->
-<section id="portafolios">
-<h2>Portafolios de Inversión</h2>
+    <section id="simulador-wealth" class="section-dark fade-up">
+    <h2>Simulación de Portafolios (Movimiento Browniano Geométrico)</h2>
+    
+    <p style="max-width:800px;">
+    Para evaluar el comportamiento de los portafolios en el tiempo, utilizamos un modelo de 
+    <strong>Movimiento Browniano Geométrico (GBM)</strong>, simulando 10,000 escenarios 
+    durante 252 días de trading (1 año). Esto nos permite estimar la distribución de resultados 
+    y el valor esperado de la inversión.
+    </p>
+    
+    <div class="grid" style="align-items:center;">
+    
+    <!-- SIMULADOR -->
+    <div class="card">
+    
+    <h3>Simula tu inversión</h3>
+    
+    <input type="number" id="montoWealth" placeholder="Inversión inicial (USD)" 
+    style="width:100%;padding:10px;margin-bottom:15px; border: 1px solid #ccc; border-radius: 8px;">
+    
+    <select id="perfilWealth" 
+    style="width:100%;padding:10px;margin-bottom:20px; border: 1px solid #ccc; border-radius: 8px;">
+    <option value="1.07">Escudo Protector (7.0%)</option>
+    <option value="1.094">Ruta Balanceada (9.4%)</option>
+    <option value="1.099">Impulso Máximo (9.9%)</option>
+    </select>
+    
+    <button class="btn-primary" onclick="calcularWealth()" style="width:100%;">
+    Simular escenario
+    </button>
+    
+    <div id="resultadoWealth" class="sim-result" style="display:none; text-align:center;"></div>
+    
+    </div>
+    
+    <!-- EXPLICACIÓN VISUAL -->
+    <div class="card">
+    
+    <h3>¿Qué significa esta simulación?</h3>
+    
+    <ul style="line-height:1.8;">
+    <li>Se generan miles de trayectorias posibles del portafolio</li>
+    <li>Cada trayectoria incorpora volatilidad del mercado</li>
+    <li>El resultado mostrado es la <strong>mediana esperada</strong></li>
+    <li>Permite entender riesgo, no solo retorno</li>
+    </ul>
+    
+    <p style="margin-top:15px; font-size:0.9rem; color:#64748B;">
+    * Este modelo es estándar en finanzas cuantitativas para simulación de activos.
+    </p>
+    
+    </div>
+    
+    </div>
+    
+    </section>
+    <section id="tokenizacion" class="section-light fade-up">
+    <h2>Inversión en Activos Tokenizados</h2>
+    
+    <p style="max-width:800px;">
+    Democratizamos el acceso a activos inmobiliarios mediante tokenización en blockchain. 
+    Los inversionistas pueden comprar fracciones de activos reales, recibir ingresos por arriendo 
+    y acceder a liquidez a través de un mercado secundario.
+    </p>
+    
+    <div class="grid" style="margin-top:40px;">
+    
+    <!-- ACTIVO -->
+    <div class="card">
+    
+    <h3>🏢 Local Comercial Tokenizado</h3>
+    
+    <p><strong>Activo subyacente:</strong> Local comercial en zona de alto tráfico</p>
+    
+    <ul style="line-height:1.8;">
+    <li><strong>Valor total:</strong> ~USD 125,000</li>
+    <li><strong>Retorno:</strong> 7% anual (arriendo)</li>
+    <li><strong>Horizonte:</strong> Largo plazo</li>
+    </ul>
+    
+    <hr style="margin:20px 0;">
+    
+    <p><strong>¿Cómo inviertes?</strong></p>
+    
+    <ol style="line-height:1.8; padding-left:18px;">
+    <li>Depositas capital en la plataforma</li>
+    <li>Compras tokens del activo</li>
+    <li>Recibes ingresos periódicos por arriendo</li>
+    <li>Puedes vender en mercado secundario</li>
+    </ol>
+    
+    <button class="btn-primary" style="width:100%; margin-top:15px;">
+    Invertir en este activo
+    </button>
+    
+    </div>
+    
+    <!-- MODELO DE NEGOCIO -->
+    <div class="card">
+    
+    <h3>💰 Modelo de ingresos</h3>
+    
+    <ul style="line-height:1.8;">
+    <li><strong>2%</strong> fee de estructuración (emisión)</li>
+    <li><strong>1.5%</strong> anual sobre AUM</li>
+    <li>Ingresos por mercado secundario</li>
+    </ul>
+    
+    <hr style="margin:20px 0;">
+    
+    <h3>📈 Expansión del portafolio</h3>
+    
+    <ul style="line-height:1.8;">
+    <li>Año 1: 1 activo (mes 6)</li>
+    <li>Año 2: 2 activos</li>
+    <li>Año 3+: 3 activos por año</li>
+    </ul>
+    
+    <p style="font-size:0.9rem;color:#64748B;">
+    Estrategia de crecimiento basada en escalabilidad de activos tokenizados.
+    </p>
+    
+    </div>
+    
+    <!-- TECNOLOGÍA -->
+    <div class="card">
+    
+    <h3>⛓️ Infraestructura Blockchain</h3>
+    
+    <ul style="line-height:1.8;">
+    <li>Red: Polygon</li>
+    <li>Bajos costos de transacción</li>
+    <li>Alta escalabilidad</li>
+    <li>Smart contracts para seguridad</li>
+    </ul>
+    
+    <hr style="margin:20px 0;">
+    
+    <h3>🔄 Liquidez</h3>
+    
+    <p>
+    Los inversionistas pueden vender sus tokens en un mercado secundario interno, 
+    permitiendo liquidez sin necesidad de vender el activo completo.
+    </p>
+    
+    <button class="btn-secondary" style="width:100%; margin-top:15px;">
+    Ir al mercado secundario
+    </button>
+    
+    </div>
+    
+    </div>
+    
+    </section>
+    <section id="factoring" class="section-dark fade-up">
+    <h2>Factoring: Motor de Liquidez del Ecosistema</h2>
+    
+    <p style="max-width:800px;">
+    Nuestro servicio de factoring no solo genera liquidez para PYMEs, sino que también 
+    funciona como un mecanismo estratégico de originación de activos y flujo de caja 
+    dentro del ecosistema MST.
+    </p>
+    
+    <div class="grid" style="margin-top:40px;">
+    
+    <!-- QUÉ ES -->
+    <div class="card">
+    <h3>⚡ Liquidez inmediata</h3>
+    
+    <p>
+    Financiamos facturas del sector transporte anticipando hasta el <strong>85%</strong> 
+    del valor en menos de 48 horas.
+    </p>
+    
+    <ul style="line-height:1.8;">
+    <li>Sin endeudamiento</li>
+    <li>Mejora flujo de caja</li>
+    <li>Plazos de 30 a 90 días</li>
+    </ul>
+    
+    </div>
+    
+    <!-- CÓMO FUNCIONA -->
+    <div class="card">
+    <h3>🔄 Flujo de operación</h3>
+    
+    <ol style="line-height:1.8; padding-left:18px;">
+    <li>La empresa emite una factura</li>
+    <li>MST adelanta liquidez</li>
+    <li>El cliente paga al vencimiento</li>
+    <li>Se liquida el saldo final</li>
+    </ol>
+    
+    <p style="font-size:0.9rem;color:#64748B;">
+    Proceso simple, rápido y digital.
+    </p>
+    
+    </div>
+    
+    <!-- ESTRATEGIA -->
+    <div class="card">
+    <h3>🧠 Rol dentro del modelo</h3>
+    
+    <ul style="line-height:1.8;">
+    <li>Genera flujo de caja constante</li>
+    <li>Permite rotación de capital</li>
+    <li>Reduce riesgo mediante diversificación</li>
+    <li>Base para expansión del portafolio</li>
+    </ul>
+    
+    </div>
+    
+    </div>
+    
+    <!-- DIFERENCIAL -->
+    <div class="grid" style="margin-top:40px;">
+    
+    <div class="card">
+    <h3>🎯 Especialización sectorial</h3>
+    <p>Enfocados en transporte, entendiendo ciclos de pago y riesgo operativo.</p>
+    </div>
+    
+    <div class="card">
+    <h3>⚙️ Modelos propios</h3>
+    <p>Evaluación de riesgo basada en análisis financiero y comportamiento de pago.</p>
+    </div>
+    
+    <div class="card">
+    <h3>🚀 Escalabilidad</h3>
+    <p>Modelo replicable en otros sectores intensivos en cuentas por cobrar.</p>
+    </div>
+    
+    <div class="card">
+    <h3>💰 Generación de ingresos</h3>
+    <p>Ingreso vía descuento financiero aplicado a las facturas.</p>
+    </div>
+    
+    </div>
+    
+    <!-- SIMULADOR -->
+    <div style="margin-top:50px;">
+    <h3>Simula tu liquidez</h3>
+    
+    <div class="card" style="max-width:500px;">
+    <input type="number" id="valorFactura" placeholder="Valor factura (USD)" 
+    style="width:100%;padding:10px;margin-bottom:10px; border: 1px solid #ccc; border-radius: 8px;">
+    
+    <select id="plazo" 
+    style="width:100%;padding:10px; border: 1px solid #ccc; border-radius: 8px;">
+    <option value="30">30 días</option>
+    <option value="60">60 días</option>
+    <option value="90">90 días</option>
+    </select>
+    
+    <br><br>
+    
+    <button class="btn-primary" onclick="calcularFactoring()" style="width:100%;">
+    Calcular anticipo
+    </button>
+    
+    <div id="resultadoFactoring" class="sim-result" style="display:none;"></div>
+    
+    </div>
+    </div>
+    
+    </section>
 
-<div class="grid">
+    <section id="equipo" class="section-dark fade-up">
+        <h2>Socios Fundadores</h2>
+        <div class="grid">
+            <div class="card founder">
+                <img src="Miguel.jpeg" alt="Miguel Torres">
+                <h3>Miguel Torres</h3>
+                <p>Economista de la Universidad de los Andes con énfasis en finanzas corporativas y estructuración de deuda. Experiencia en análisis de riesgo, modelación financiera y diseño de vehículos de inversión enfocados en pymes.</p>
+            </div>
+            <div class="card founder">
+                <img src="Sofía.jpeg" alt="Sofía Ardila">
+                <h3>Sofía Ardila</h3>
+                <p>Economista de la Universidad Nacional con especialización en economía aplicada y organización industrial. Experiencia en análisis sectorial del transporte y optimización de procesos financieros para empresas logísticas.</p>
+            </div>
+            <div class="card founder">
+                <img src="Tomás.jpeg" alt="Tomás Guarín">
+                <h3>Tomás Guarín</h3>
+                <p>Economista de la Universidad de los Andes con enfoque en mercados financieros y estrategia empresarial. Experiencia en estructuración de portafolios, análisis macroeconómico y crecimiento de modelos fintech.</p>
+            </div>
+        </div>
+    </section>
+    <section id="inversionistas" class="section-light fade-up">
+    <h2>Oportunidad de Inversión</h2>
+    
+    <p style="max-width:800px;">
+    MST Group combina ingresos provenientes de factoring, gestión de portafolios y tokenización 
+    para construir un modelo escalable con generación de flujo y crecimiento en activos bajo administración (AUM).
+    </p>
+    
+    <!-- MÉTRICAS CLAVE -->
+    <div class="metrics">
+    
+    <div class="metric">
+    <h3 style="color: var(--blue);">CAC</h3>
+    <p style="font-size:1.5rem;font-weight:bold;">US$ 15</p>
+    <p style="font-size:0.8rem;color:#64748B;">Costo de adquisición por usuario</p>
+    </div>
+    
+    <div class="metric">
+    <h3 style="color: var(--blue);">OPEX</h3>
+    <p style="font-size:1.5rem;font-weight:bold;">US$ 100K inicial</p>
+    <p style="font-size:0.8rem;color:#64748B;">Costos operativos iniciales</p>
+    </div>
+    
+    <div class="metric">
+    <h3 style="color: var(--green);">Break-even</h3>
+    <p style="font-size:1.5rem;font-weight:bold;">Mes 29</p>
+    <p style="font-size:0.8rem;color:#64748B;">Punto de equilibrio proyectado</p>
+    </div>
+    
+    <div class="metric">
+    <h3 style="color: var(--gold);">AUM objetivo</h3>
+    <p style="font-size:1.5rem;font-weight:bold;">US$ 1B</p>
+    <p style="font-size:0.8rem;color:#64748B;">Activos bajo gestión necesarios</p>
+    </div>
+    
+    </div>
+    
+    <!-- MODELO DE INGRESOS -->
+    <div class="grid" style="margin-bottom:40px;">
+    
+    <div class="card">
+    <h3>💰 Fuentes de ingresos</h3>
+    
+    <ul style="line-height:1.8;">
+    <li>Factoring (descuento financiero)</li>
+    <li>1.5% anual sobre AUM</li>
+    <li>2% emisión de activos tokenizados</li>
+    <li>Fees por mercado secundario</li>
+    </ul>
+    
+    </div>
+    
+    <div class="card">
+    <h3>📈 Estrategia de crecimiento</h3>
+    
+    <ul style="line-height:1.8;">
+    <li>Crecimiento en usuarios (CAC bajo)</li>
+    <li>Escalamiento de AUM</li>
+    <li>Expansión de activos tokenizados</li>
+    <li>Reinversión de flujo de factoring</li>
+    </ul>
+    
+    </div>
+    
+    <div class="card">
+    <h3>🚀 Ventaja competitiva</h3>
+    
+    <ul style="line-height:1.8;">
+    <li>Modelo híbrido (fintech + wealthtech)</li>
+    <li>Diversificación de ingresos</li>
+    <li>Escalabilidad digital</li>
+    <li>Infraestructura blockchain</li>
+    </ul>
+    
+    </div>
+    
+    </div>
+    
+    </section>
 
-<div class="card">
-<h3>🛡️ Conservador</h3>
-<p>Retorno: 7.2% | Vol: 7.6%</p>
-<ul>
-<li>SPY 24.6%</li>
-<li>GLD 23.3%</li>
-<li>IEF 30%</li>
-<li>LQD 22.1%</li>
-</ul>
-</div>
+    <section id="contacto" class="section-dark fade-up">
+        <h2>Contáctanos</h2>
+        <div class="grid" style="align-items:center;">
+            <div class="card">
+                <h3>Solicita más información</h3>
+                <p>Ya sea para liquidez inmediata o para invertir en nuestros portafolios, déjanos tus datos.</p>
+                <form>
+                    <input type="text" placeholder="Nombre completo o empresa" style="width:100%;padding:10px;margin-bottom:10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+                    <input type="email" placeholder="Correo electrónico" style="width:100%;padding:10px;margin-bottom:10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+                    <select style="width:100%;padding:10px;margin-bottom:10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+                        <option>Me interesa Factoring</option>
+                        <option>Me interesa Invertir (Wealthtech)</option>
+                    </select>
+                    <textarea placeholder="Mensaje" style="width:100%;padding:10px;margin-bottom:10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;"></textarea>
+                    <button type="submit" class="btn-primary" style="width: 100%;">Enviar solicitud</button>
+                </form>
+            </div>
+            <div class="card">
+                <h3>Información directa</h3>
+                <p><strong>Email:</strong> contacto@mstgroup.com</p>
+                <p><strong>Teléfono:</strong> +57 300 000 0000</p>
+                <p><strong>Horario:</strong> Lunes a Viernes 8:00am - 6:00pm</p>
+                <br>
+                <a href="https://wa.me/573000000000" class="btn-secondary" target="_blank" style="width: 100%; text-align: center; box-sizing: border-box;">
+                    Hablar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-<h3>⚖️ Moderado</h3>
-<p>Retorno: 9.3% | Vol: 8.8%</p>
-<ul>
-<li>SPY 30%</li>
-<li>GLD 30%</li>
-<li>IEF 25.9%</li>
-<li>VEA 14.1%</li>
-</ul>
-</div>
+    <footer>
+        © 2026 MST Group - Finanzas Aplicadas & Fintech
+    </footer>
 
-<div class="card">
-<h3>🚀 Agresivo</h3>
-<p>Retorno: 10.1% | Vol: 9.9%</p>
-<ul>
-<li>SPY 30%</li>
-<li>GLD 30%</li>
-<li>VEA 24.6%</li>
-<li>IEF 15.4%</li>
-</ul>
-</div>
+    <script>
+        // Animaciones de Scroll (Fade Up)
+        const faders = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+        faders.forEach(el => observer.observe(el));
 
-</div>
-</section>
+        // Lógica del Simulador Original (Factoring)
+        function calcularFactoring(){
+            let valor = parseFloat(document.getElementById("valorFactura").value);
+            let plazo = parseInt(document.getElementById("plazo").value);
+            if(!valor){ alert("Ingresa un valor válido de factura"); return; }
+            
+            let anticipo = valor * 0.85;
+            let tasa = 0.02;
+            let costo = valor * (tasa * (plazo / 30));
+            let recibeFinal = valor - costo;
+            
+            let resultDiv = document.getElementById("resultadoFactoring");
+            resultDiv.style.display = "block";
+            resultDiv.innerHTML = 
+                "Recibes hoy: $" + anticipo.toLocaleString('en-US', {minimumFractionDigits: 2}) +
+                "<br>Costo estimado: $" + costo.toLocaleString('en-US', {minimumFractionDigits: 2}) +
+                "<br>Valor neto final: $" + recibeFinal.toLocaleString('en-US', {minimumFractionDigits: 2});
+        }
 
-<!-- TOKENIZACION -->
-<section id="tokenizacion" class="section-dark">
-<h2>Tokenización Inmobiliaria</h2>
-<div class="card">
-<p>Invertimos en locales comerciales (~USD 125K) tokenizados en blockchain.</p>
-
-<ul>
-<li>7% retorno anual por arriendo</li>
-<li>1.5% fee sobre AUM</li>
-<li>2% fee emisión</li>
-</ul>
-
-<p><strong>Expansión:</strong> 1 local año 1, 2 año 2, 3+ desde año 3.</p>
-</div>
-</section>
-
-<!-- MODELO -->
-<section id="modelo">
-<h2>Modelo de Negocio</h2>
-<div class="grid">
-<div class="card"><h3>Fees AUM</h3><p>1.5% anual</p></div>
-<div class="card"><h3>Emisión</h3><p>2% por activo</p></div>
-<div class="card"><h3>Factoring</h3><p>Spread financiero</p></div>
-</div>
-</section>
-
-<!-- SIMULADOR -->
-<section id="simulador" class="section-dark">
-<h2>Simula tu Factura</h2>
-<input id="valor" type="number" placeholder="Valor factura">
-<button onclick="calc()">Calcular</button>
-<div id="res" class="sim-result"></div>
-</section>
-
-<!-- CONTACTO -->
-<section id="contacto">
-<h2>Contacto</h2>
-<p>contacto@mstcapital.com</p>
-</section>
-
-<footer>
-© 2026 MST Capital
-</footer>
-
-<script>
-function calc(){
-let v=document.getElementById("valor").value;
-let a=v*0.85;
-document.getElementById("res").innerHTML="Recibes: $"+a;
-}
-</script>
-
+        // Lógica del Simulador Nuevo (Wealthtech - Movimiento Browniano)
+        function calcularWealth(){
+            let inversion = parseFloat(document.getElementById("montoWealth").value);
+            let factorCrecimiento = parseFloat(document.getElementById("perfilWealth").value);
+            
+            if(!inversion){ alert("Ingresa un monto válido para invertir"); return; }
+            
+            // Cálculo simple de la proyección mediana según el factor seleccionado del HTML
+            let valorFinalEsperado = inversion * factorCrecimiento;
+            let ganancia = valorFinalEsperado - inversion;
+            
+            let resultDiv = document.getElementById("resultadoWealth");
+            resultDiv.style.display = "block";
+            resultDiv.innerHTML = 
+                "Inversión Inicial: $" + inversion.toLocaleString('en-US', {minimumFractionDigits: 2}) +
+                "<br>Ganancia Esperada (1 Año): $" + ganancia.toLocaleString('en-US', {minimumFractionDigits: 2}) +
+                "<br><strong style='color: var(--green);'>Valor Final Proyectado (Mediana): $" + valorFinalEsperado.toLocaleString('en-US', {minimumFractionDigits: 2}) + "</strong>";
+        }
+    </script>
 </body>
 </html>
