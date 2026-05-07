@@ -228,6 +228,46 @@
             margin:auto;
         }
 
+        /* ===== TITULARIZACIÓN: HIGHLIGHT BOX ===== */
+        .deal-highlight{
+            background:linear-gradient(135deg,var(--navy),#1e293b);
+            color:white;
+            padding:2.5rem;
+            border-radius:18px;
+            margin-bottom:3rem;
+        }
+
+        .deal-highlight h3{
+            color:var(--gold);
+            margin-top:0;
+        }
+
+        .deal-metrics{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+            gap:20px;
+            margin-top:25px;
+        }
+
+        .deal-metric{
+            background:rgba(255,255,255,0.08);
+            padding:1.2rem;
+            border-radius:12px;
+            border-left:3px solid var(--gold);
+        }
+
+        .deal-metric .label{
+            font-size:0.85rem;
+            color:#cbd5e1;
+            margin-bottom:5px;
+        }
+
+        .deal-metric .value{
+            font-size:1.4rem;
+            font-weight:700;
+            color:white;
+        }
+
         footer{
             background:var(--navy);
             color:white;
@@ -248,6 +288,7 @@
             <a href="#factoring">Factoring</a>
             <a href="#roboadvisor">Roboadvisor</a>
             <a href="#tokenizacion">Tokenización</a>
+            <a href="#titularizacion">Titularización</a>
             <a href="#simulador-wealth">Simuladores</a>
             <a href="#equipo">Equipo</a>
             <a href="#inversionistas" class="btn-secondary">Inversionistas</a>
@@ -256,12 +297,13 @@
     </nav>
 
     <section class="hero">
-        <h1>Soluciones Financieras: Factoring & Wealthtech</h1>
-        <p>Liquidez inmediata para PYMEs del sector transporte y acceso democratizado a portafolios de inversión mediante tecnología blockchain y tokenización.</p>
+        <h1>Soluciones Financieras: Factoring, Wealthtech % Titularización</h1>
+        <p>Liquidez inmediata para PYMEs del sector transporte, acceso democratizado a portafolios de inversión mediante tokenización, y estructuración de operaciones de mercado de capitales para entidades financieras.</p>
         <br>
         <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
             <a href="#factoring" class="btn-primary">Servicios de Factoring</a>
             <a href="#roboadvisor" class="btn-secondary" style="color: white; border-color: white;">Invertir en Wealthtech</a>
+            <a href="#titularizacion" class="btn-secondary" style="color: white; border-color: white;">Banca de Inversión</a>
         </div>
     </section>
     <section id="optimizacion" class="section-light fade-up">
@@ -499,6 +541,161 @@
     </div>
     
     </section>
+
+    <!-- ===== INICIO SECCIÓN TITULARIZACIÓN ===== -->
+    <section id="titularizacion" class="section-dark fade-up">
+        <h2>Banca de Inversión: Titularización de Cartera</h2>
+        
+        <p style="max-width:800px;">
+        Estructuramos operaciones de mercado de capitales para entidades financieras que buscan 
+        optimizar su balance, mejorar indicadores regulatorios y liberar capacidad para originar 
+        nuevos negocios. Diseñamos vehículos de propósito especial respaldados en cartera, 
+        gestionamos el proceso de calificación crediticia y conectamos a los emisores con 
+        inversionistas institucionales.
+        </p>
+
+        <!-- HIGHLIGHT TRANSACCIÓN BANCOOMEVA -->
+        <div class="deal-highlight" style="margin-top:40px;">
+            <h3>Caso destacado: Titularización Hipotecaria — Bancoomeva</h3>
+            <p style="margin-top:15px;">
+            MST Capital estructuró una emisión de títulos respaldados en cartera hipotecaria 
+            en pesos colombianos por <strong>$185.7 mil millones COP</strong> para Bancoomeva S.A., 
+            con el objetivo de fortalecer su solvencia, mejorar el indicador de liquidez 
+            y liberar capacidad de balance para el redespliegue hacia su negocio core de consumo.
+            </p>
+
+            <div class="deal-metrics">
+                <div class="deal-metric">
+                    <div class="label">Monto emitido</div>
+                    <div class="value">$185.7B COP</div>
+                </div>
+                <div class="deal-metric">
+                    <div class="label">Pool cedido al vehículo</div>
+                    <div class="value">$222.9B COP</div>
+                </div>
+                <div class="deal-metric">
+                    <div class="label">Plazo legal</div>
+                    <div class="value">72 meses</div>
+                </div>
+                <div class="deal-metric">
+                    <div class="label">Cupón Serie A</div>
+                    <div class="value">14.95% E.A.</div>
+                </div>
+                <div class="deal-metric">
+                    <div class="label">Estructura</div>
+                    <div class="value">90% / 10%</div>
+                </div>
+                <div class="deal-metric">
+                    <div class="label">Sobrecolateral retenido</div>
+                    <div class="value">20%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRES CARDS: PROBLEMA / SOLUCIÓN / IMPACTO -->
+        <div class="grid" style="margin-top:40px;">
+            
+            <div class="card" style="border-top: 4px solid #EF4444;">
+                <h3 style="color: #EF4444; margin-top:0;">🎯 El diagnóstico</h3>
+                <p>Bancoomeva enfrenta tres presiones estructurales en su balance:</p>
+                <ul style="line-height:1.8;">
+                    <li><strong>Solvencia:</strong> 10.47% — con trayectoria descendente desde ~20% en 2021</li>
+                    <li><strong>CFEN:</strong> 113% — por debajo del promedio del Grupo 2 (136%)</li>
+                    <li><strong>Cartera no estratégica:</strong> $1.24 billones COP en hipotecas, mientras el banco se enfoca en consumo</li>
+                </ul>
+            </div>
+
+            <div class="card" style="border-top: 4px solid #2563EB;">
+                <h3 style="color: #2563EB; margin-top:0;">🏗️ La estructura</h3>
+                <p>Vehículo de propósito especial (patrimonio autónomo) con dos series de títulos:</p>
+                <ul style="line-height:1.8;">
+                    <li><strong>Serie A Senior:</strong> $167.1B (90%), AAA esperada</li>
+                    <li><strong>Serie B Subordinada:</strong> $16.7B (10%), retenida por el banco</li>
+                    <li><strong>Pricing:</strong> TES de referencia + 70 bps</li>
+                    <li><strong>WAL Serie A:</strong> 2.4 años (pass-through)</li>
+                </ul>
+            </div>
+
+            <div class="card" style="border-top: 4px solid #16A34A;">
+                <h3 style="color: #16A34A; margin-top:0;">📊 El impacto</h3>
+                <p>Mejoras estructurales cuantificadas en el balance:</p>
+                <ul style="line-height:1.8;">
+                    <li><strong>Solvencia:</strong> 10.47% → 10.93% (+47 bps)</li>
+                    <li><strong>IRL:</strong> 1.25 → 1.29</li>
+                    <li><strong>Liquidez inmediata:</strong> $185.7B COP</li>
+                    <li><strong>APR reducidos:</strong> $185B fuera del balance</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- COMPOSICIÓN POR COSECHAS -->
+        <div class="card" style="margin-top:40px;">
+            <h3>📅 Selección del pool por cosechas</h3>
+            <p>El pool está compuesto por <strong>9 cosechas</strong> (2017-2025) seleccionadas para 
+            balancear plazo remanente, calidad crediticia y tasa promedio ponderada del 15.04% E.A. 
+            Combina cosechas antiguas (estructuralmente más costosas para el banco) con cosechas 
+            recientes de tasa alta que aportan yield al pool.</p>
+            
+            <div class="grid" style="margin-top:20px;">
+                <div style="background:#f8fafc;padding:1rem;border-radius:12px;">
+                    <strong style="color:var(--blue);">Cosechas 2017-2021</strong>
+                    <p style="margin:5px 0 0 0;font-size:0.9rem;">Pre-ciclo y tasas mínimas históricas — plazo remanente largo, mora baja por seasoning.</p>
+                </div>
+                <div style="background:#f8fafc;padding:1rem;border-radius:12px;">
+                    <strong style="color:var(--blue);">Cosechas 2022-2024</strong>
+                    <p style="margin:5px 0 0 0;font-size:0.9rem;">Originadas en alza de tasas — aportan tasa premium al pool (17-19% E.A.).</p>
+                </div>
+                <div style="background:#f8fafc;padding:1rem;border-radius:12px;">
+                    <strong style="color:var(--blue);">Cosecha 2025</strong>
+                    <p style="margin:5px 0 0 0;font-size:0.9rem;">Recientes, fresh underwriting, tasas en normalización.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- METODOLOGÍA -->
+        <div class="grid" style="margin-top:40px;">
+            
+            <div class="card">
+                <h3>🔍 Modelo financiero</h3>
+                <p>Construimos un modelo dinámico que proyecta:</p>
+                <ul style="line-height:1.7;">
+                    <li>Run-off del pool por cosecha y por mes</li>
+                    <li>Prepagos (CPR 13.5% anual)</li>
+                    <li>Pérdidas crediticias (mora 6.57%, recuperación 65%)</li>
+                    <li>Waterfall de pagos a inversionistas</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>⚖️ Marco regulatorio</h3>
+                <p>Operación estructurada bajo:</p>
+                <ul style="line-height:1.7;">
+                    <li>Decreto 2555 de 2010</li>
+                    <li>Inscripción RNVE</li>
+                    <li>Calificación de riesgo (Fitch / BRC)</li>
+                    <li>Listado en Bolsa de Valores de Colombia</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>💼 Pricing como estructurador</h3>
+                <p>Honorarios de MST Capital:</p>
+                <ul style="line-height:1.7;">
+                    <li><strong>1.0%</strong> sobre monto emitido (estructuración upfront)</li>
+                    <li>Honorarios opcionales de placement</li>
+                    <li>Asesoría ongoing post-emisión (opcional)</li>
+                </ul>
+                <p style="font-size:0.85rem;color:#64748B;margin-top:10px;">
+                Rango benchmark de mercado: 0.5% - 1.5% del monto emitido.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- ===== FIN SECCIÓN TITULARIZACIÓN ===== -->
+
     <section id="factoring" class="section-dark fade-up">
     <h2>Factoring: Motor de Liquidez del Ecosistema</h2>
     
@@ -636,8 +833,9 @@
     <h2>Oportunidad de Inversión</h2>
     
     <p style="max-width:800px;">
-    MST Group combina ingresos provenientes de factoring, gestión de portafolios y tokenización 
-    para construir un modelo escalable con generación de flujo y crecimiento en activos bajo administración (AUM).
+    MST Group combina ingresos provenientes de factoring, gestión de portafolios, tokenización 
+    y banca de inversión para construir un modelo escalable con generación de flujo y crecimiento 
+    en activos bajo administración (AUM).
     </p>
     
     <!-- MÉTRICAS CLAVE -->
@@ -679,6 +877,7 @@
     <li>Factoring (descuento financiero)</li>
     <li>1.5% anual sobre AUM</li>
     <li>2% emisión de activos tokenizados</li>
+    <li>1% estructuración de titularizaciones</li>
     <li>Fees por mercado secundario</li>
     </ul>
     
@@ -691,6 +890,7 @@
     <li>Crecimiento en usuarios (CAC bajo)</li>
     <li>Escalamiento de AUM</li>
     <li>Expansión de activos tokenizados</li>
+    <li>Pipeline de banca de inversión</li>
     <li>Reinversión de flujo de factoring</li>
     </ul>
     
@@ -700,7 +900,7 @@
     <h3>🚀 Ventaja competitiva</h3>
     
     <ul style="line-height:1.8;">
-    <li>Modelo híbrido (fintech + wealthtech)</li>
+    <li>Modelo híbrido (fintech + wealthtech + banca de inversión)</li>
     <li>Diversificación de ingresos</li>
     <li>Escalabilidad digital</li>
     <li>Infraestructura blockchain</li>
@@ -717,13 +917,14 @@
         <div class="grid" style="align-items:center;">
             <div class="card">
                 <h3>Solicita más información</h3>
-                <p>Ya sea para liquidez inmediata o para invertir en nuestros portafolios, déjanos tus datos.</p>
+                <p>Ya sea para liquidez inmediata, para invertir en nuestros portafolios o para explorar una transacción de banca de inversión, déjanos tus datos.</p>
                 <form>
                     <input type="text" placeholder="Nombre completo o empresa" style="width:100%;padding:10px;margin-bottom:10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
                     <input type="email" placeholder="Correo electrónico" style="width:100%;padding:10px;margin-bottom:10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
                     <select style="width:100%;padding:10px;margin-bottom:10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
                         <option>Me interesa Factoring</option>
                         <option>Me interesa Invertir (Wealthtech)</option>
+                        <option>Me interesa Banca de Inversión / Titularización</option>
                     </select>
                     <textarea placeholder="Mensaje" style="width:100%;padding:10px;margin-bottom:10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;"></textarea>
                     <button type="submit" class="btn-primary" style="width: 100%;">Enviar solicitud</button>
