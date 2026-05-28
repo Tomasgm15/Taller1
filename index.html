@@ -268,6 +268,76 @@
             color:white;
         }
 
+        /* ===== PREMIUM FINANCE: TABLE ===== */
+        .pf-table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:20px;
+            font-size:0.95rem;
+        }
+        .pf-table th{
+            background:var(--navy);
+            color:white;
+            padding:10px 14px;
+            text-align:center;
+            font-weight:600;
+        }
+        .pf-table td{
+            padding:10px 14px;
+            text-align:center;
+            border-bottom:1px solid #eef2f7;
+        }
+        .pf-table tr:nth-child(even) td{background:#f8fafc;}
+        .pf-table tr.highlight td{
+            background:#dbeafe;
+            font-weight:700;
+            color:var(--navy);
+        }
+
+        .pf-badge{
+            display:inline-block;
+            background:linear-gradient(135deg,var(--navy),#1e3a5f);
+            color:white;
+            padding:6px 16px;
+            border-radius:20px;
+            font-size:0.85rem;
+            font-weight:600;
+            margin-bottom:20px;
+        }
+
+        .pf-highlight{
+            background:linear-gradient(135deg,#1e3a5f,#0B1C2D);
+            color:white;
+            padding:2.5rem;
+            border-radius:18px;
+            margin-top:40px;
+        }
+        .pf-highlight h3{color:var(--gold);margin-top:0;}
+
+        .pf-metrics{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+            gap:16px;
+            margin-top:20px;
+        }
+        .pf-metric{
+            background:rgba(255,255,255,0.09);
+            padding:1.1rem;
+            border-radius:12px;
+            border-left:3px solid var(--gold);
+        }
+        .pf-metric .label{font-size:0.8rem;color:#cbd5e1;margin-bottom:4px;}
+        .pf-metric .value{font-size:1.35rem;font-weight:700;color:white;}
+
+        .pivot-box{
+            background:#fefce8;
+            border-left:4px solid var(--gold);
+            padding:1.5rem 2rem;
+            border-radius:0 14px 14px 0;
+            margin:30px 0;
+        }
+        .pivot-box p{margin:0;color:#78350f;font-weight:500;}
+
         footer{
             background:var(--navy);
             color:white;
@@ -289,6 +359,7 @@
             <a href="#roboadvisor">Roboadvisor</a>
             <a href="#tokenizacion">Tokenización</a>
             <a href="#titularizacion">Titularización</a>
+            <a href="#premiumfinance">Premium Finance</a>
             <a href="#simulador-wealth">Simuladores</a>
             <a href="#equipo">Equipo</a>
             <a href="#inversionistas" class="btn-secondary">Inversionistas</a>
@@ -696,6 +767,235 @@
     </section>
     <!-- ===== FIN SECCIÓN TITULARIZACIÓN ===== -->
 
+    <!-- ===== INICIO SECCIÓN PREMIUM FINANCE ===== -->
+    <section id="premiumfinance" class="section-light fade-up">
+        <h2>MST Premium Finance: Financiación de Primas de Seguros</h2>
+
+        <span class="pf-badge">Nuevo modelo — pivote desde MST Factoring</span>
+
+        <p style="max-width:800px;">
+        MST evolucionó su propuesta de valor para el sector transporte: en lugar de financiar facturas,
+        ahora distribuye pólizas de seguros como broker y financia la prima para los transportadores
+        que no pueden pagarla de contado. Sin riesgo asegurador, sin reservas técnicas — solo tecnología,
+        distribución y crédito especializado.
+        </p>
+
+        <!-- POR QUÉ FALLÓ EL MODELO ANTERIOR -->
+        <div class="pivot-box">
+            <p>
+            <strong>¿Por qué se abandonó MST Factoring?</strong> El modelo de factoring dependía
+            del spread entre la tasa cobrada al cliente y el costo de fondeo. Al entrar deuda externa,
+            ese margen colapsó. Los mejores clientes migraron a opciones más baratas, la mora subió y
+            el flujo de caja se volvió insostenible a partir del mes 24. Lo que sobrevivió fue lo más
+            valioso: la base de clientes, el conocimiento sectorial y las alianzas con Fedetranscarga,
+            Colfecar y FITAC.
+            </p>
+        </div>
+
+        <!-- MODELO DE NEGOCIO: 3 CARDS -->
+        <div class="grid" style="margin-top:40px;">
+
+            <div class="card" style="border-top:4px solid var(--blue);">
+                <h3 style="color:var(--blue);margin-top:0;">🤝 Broker embebido</h3>
+                <p>MST distribuye pólizas de seguros de transporte de carga a través de alianzas con
+                Fedetranscarga (442K vehículos), Colfecar (275K propietarios) y FITAC (~35K viajes/día).</p>
+                <ul style="line-height:1.8;">
+                    <li><strong>10%</strong> de comisión sobre prima emitida</li>
+                    <li>Sin riesgo de siniestralidad ni reservas</li>
+                    <li>La aseguradora asume el riesgo técnico</li>
+                </ul>
+            </div>
+
+            <div class="card" style="border-top:4px solid var(--gold);">
+                <h3 style="color:#92400e;margin-top:0;">💳 Financiación de primas</h3>
+                <p>El 40% de los clientes financia su prima con MST. La empresa presta el 90% del
+                valor de la prima a 28% EA, recuperando en 2 cuotas mensuales.</p>
+                <ul style="line-height:1.8;">
+                    <li>LTV: <strong>90%</strong> | Plazo: <strong>2 meses</strong></li>
+                    <li>Mora estimada: <strong>4%</strong></li>
+                    <li>Scoring propio basado en data sectorial</li>
+                </ul>
+            </div>
+
+            <div class="card" style="border-top:4px solid var(--green);">
+                <h3 style="color:var(--green);margin-top:0;">📈 Portafolio libre</h3>
+                <p>El capital del SAFE no desplegado en financiación se invierte en instrumentos
+                conservadores de corto plazo mientras se origina cartera.</p>
+                <ul style="line-height:1.8;">
+                    <li>FIC Credicorp (40%) — 8.0% EA</li>
+                    <li>CDT 180 días (40%) — 9.5% EA</li>
+                    <li>CDT 360 días (20%) — 10.5% EA</li>
+                    <li>Tasa ponderada: <strong>9.1% EA</strong></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- PROYECCIONES FINANCIERAS -->
+        <div class="card" style="margin-top:50px;">
+            <h3>📊 Proyecciones financieras — 5 años (USD, TC 4,200 COP/USD)</h3>
+            <p style="color:#64748B;font-size:0.9rem;">Modelo de 60 meses. Políticas vendidas: 100 en Mes 1 → 1,012 en Mes 60 (crecimiento 4% mensual). Prima promedio inicial: USD 119.</p>
+
+            <div style="overflow-x:auto;">
+                <table class="pf-table">
+                    <thead>
+                        <tr>
+                            <th>Año</th>
+                            <th>Revenue</th>
+                            <th>EBIT</th>
+                            <th>Net Income</th>
+                            <th>Comentario</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Year 1</td>
+                            <td>$34K</td>
+                            <td style="color:#EF4444;">($108K)</td>
+                            <td style="color:#EF4444;">($108K)</td>
+                            <td style="font-size:0.85rem;color:#64748B;text-align:left;">Fase de construcción — SAFE cubre OpEx</td>
+                        </tr>
+                        <tr>
+                            <td>Year 2</td>
+                            <td>$66K</td>
+                            <td style="color:#EF4444;">($85K)</td>
+                            <td style="color:#EF4444;">($85K)</td>
+                            <td style="font-size:0.85rem;color:#64748B;text-align:left;">Crecimiento de cartera — pérdidas se reducen</td>
+                        </tr>
+                        <tr>
+                            <td>Year 3</td>
+                            <td>$138K</td>
+                            <td style="color:#EF4444;">($26K)</td>
+                            <td style="color:#EF4444;">($26K)</td>
+                            <td style="font-size:0.85rem;color:#64748B;text-align:left;">Breakeven operativo cercano — Mes ~34</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>Year 4</td>
+                            <td>$321K</td>
+                            <td style="color:var(--green);">$128K</td>
+                            <td style="color:var(--green);">$125K</td>
+                            <td style="font-size:0.85rem;color:#1e3a5f;text-align:left;">✅ Primer año rentable</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>Year 5</td>
+                            <td>$791K</td>
+                            <td style="color:var(--green);">$532K</td>
+                            <td style="color:var(--green);">$519K</td>
+                            <td style="font-size:0.85rem;color:#1e3a5f;text-align:left;">✅ Margen EBIT 67% — modelo maduro</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="grid" style="margin-top:30px;">
+                <div style="background:#f0fdf4;padding:1.2rem;border-radius:12px;border-left:3px solid var(--green);">
+                    <p style="margin:0;font-size:0.85rem;color:#166534;font-weight:600;">Comisiones Mes 60</p>
+                    <p style="margin:4px 0 0 0;font-size:1.3rem;font-weight:700;color:#15803d;">$87K/mes</p>
+                </div>
+                <div style="background:#eff6ff;padding:1.2rem;border-radius:12px;border-left:3px solid var(--blue);">
+                    <p style="margin:0;font-size:0.85rem;color:#1e40af;font-weight:600;">Pólizas Mes 60</p>
+                    <p style="margin:4px 0 0 0;font-size:1.3rem;font-weight:700;color:#1d4ed8;">1,012 pólizas</p>
+                </div>
+                <div style="background:#fefce8;padding:1.2rem;border-radius:12px;border-left:3px solid var(--gold);">
+                    <p style="margin:0;font-size:0.85rem;color:#92400e;font-weight:600;">Breakeven</p>
+                    <p style="margin:4px 0 0 0;font-size:1.3rem;font-weight:700;color:#b45309;">Mes ~34</p>
+                </div>
+                <div style="background:#f5f3ff;padding:1.2rem;border-radius:12px;border-left:3px solid #7c3aed;">
+                    <p style="margin:0;font-size:0.85rem;color:#5b21b6;font-weight:600;">WACC (COP)</p>
+                    <p style="margin:4px 0 0 0;font-size:1.3rem;font-weight:700;color:#6d28d9;">15.4%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- VALORACIÓN -->
+        <div class="grid" style="margin-top:40px;">
+            <div class="card" style="border-top:4px solid var(--navy);">
+                <h3 style="margin-top:0;">🔢 DCF Approach</h3>
+                <p style="font-size:0.9rem;color:#64748B;">VPN utilidades netas (60 meses) + valor terminal Gordon Growth. Tasa de descuento: WACC 15.4% COP.</p>
+                <p style="font-size:2rem;font-weight:700;color:var(--navy);">$434K</p>
+                <p style="font-size:0.85rem;color:#64748B;margin:0;">Conservador — primeros 3 años arrastran pérdidas acumuladas</p>
+            </div>
+            <div class="card" style="border-top:4px solid var(--gold);">
+                <h3 style="margin-top:0;">📐 P/E Multiples</h3>
+                <p style="font-size:0.9rem;color:#64748B;">Mediana P/E 13.9x de fintechs de lending especializadas (WRLD, RM, ENVA, OppFi, IPFS proxy).</p>
+                <p style="font-size:2rem;font-weight:700;color:#b45309;">$7.2M</p>
+                <p style="font-size:0.85rem;color:#64748B;margin:0;">Upside si la mora se controla por debajo del 4% asumido</p>
+            </div>
+            <div class="card" style="border-top:4px solid var(--green);">
+                <h3 style="margin-top:0;">⚖️ Promedio 3 metodologías</h3>
+                <p style="font-size:0.9rem;color:#64748B;">Promedio simple entre DCF, P/E y EV/Revenue (mediana 2.6x comparables lending).</p>
+                <p style="font-size:2rem;font-weight:700;color:var(--green);">$3.8M</p>
+                <p style="font-size:0.85rem;color:#64748B;margin:0;">EV implícito al momento de exit en Año 5</p>
+            </div>
+        </div>
+
+        <!-- SAFE -->
+        <div class="pf-highlight" style="margin-top:50px;">
+            <h3>🔐 La ronda SAFE — Términos de inversión</h3>
+            <p style="opacity:0.9;max-width:720px;">
+                MST está levantando <strong>USD 119K vía SAFE</strong> a cambio del <strong>18% del equity</strong>.
+                El capital no genera intereses ni obliga a repago — convierte a equity en la próxima ronda
+                de valoración. Se destina aproximadamente un 60% a desplegar la cartera de financiación
+                de primas y un 40% a cubrir OpEx y desarrollo de plataforma durante la fase pre-breakeven.
+            </p>
+
+            <div class="pf-metrics">
+                <div class="pf-metric">
+                    <div class="label">Monto SAFE</div>
+                    <div class="value">USD 119K</div>
+                </div>
+                <div class="pf-metric">
+                    <div class="label">Equity ofrecido</div>
+                    <div class="value">18%</div>
+                </div>
+                <div class="pf-metric">
+                    <div class="label">Breakeven</div>
+                    <div class="value">Mes 34</div>
+                </div>
+                <div class="pf-metric">
+                    <div class="label">EV objetivo (Año 5)</div>
+                    <div class="value">$3.8M</div>
+                </div>
+                <div class="pf-metric">
+                    <div class="label">Net Income Año 5</div>
+                    <div class="value">$519K</div>
+                </div>
+                <div class="pf-metric">
+                    <div class="label">Pólizas Mes 60</div>
+                    <div class="value">1,012</div>
+                </div>
+            </div>
+
+            <div class="grid" style="margin-top:30px;">
+                <div style="background:rgba(255,255,255,0.07);padding:1.5rem;border-radius:14px;">
+                    <h4 style="color:var(--gold);margin-top:0;">Uso de fondos</h4>
+                    <ul style="line-height:1.8;opacity:0.9;padding-left:18px;">
+                        <li><strong>~60%</strong> — Cartera de financiación de primas (capital de trabajo rotativo)</li>
+                        <li><strong>~40%</strong> — Plataforma digital, compliance y equipo comercial pre-breakeven</li>
+                    </ul>
+                </div>
+                <div style="background:rgba(255,255,255,0.07);padding:1.5rem;border-radius:14px;">
+                    <h4 style="color:var(--gold);margin-top:0;">Por qué ahora</h4>
+                    <ul style="line-height:1.8;opacity:0.9;padding-left:18px;">
+                        <li>Las alianzas con Fedetranscarga, Colfecar y FITAC ya están construidas</li>
+                        <li>El dataset de riesgo sectorial del factoring existe — ya no hay que construirlo</li>
+                        <li>El nuevo modelo elimina el riesgo de balance que hundió MST Factoring</li>
+                    </ul>
+                </div>
+                <div style="background:rgba(255,255,255,0.07);padding:1.5rem;border-radius:14px;">
+                    <h4 style="color:var(--gold);margin-top:0;">Retorno del inversionista</h4>
+                    <ul style="line-height:1.8;opacity:0.9;padding-left:18px;">
+                        <li>18% del equity — sin dilución hasta próxima ronda</li>
+                        <li>EV promedio implícito en Año 5: <strong>$3.8M</strong></li>
+                        <li>Upside P/E: <strong>$7.2M</strong> si mora se mantiene bajo control</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- ===== FIN SECCIÓN PREMIUM FINANCE ===== -->
+
     <section id="factoring" class="section-dark fade-up">
     <h2>Factoring: Motor de Liquidez del Ecosistema</h2>
     
@@ -925,6 +1225,7 @@
                         <option>Me interesa Factoring</option>
                         <option>Me interesa Invertir (Wealthtech)</option>
                         <option>Me interesa Banca de Inversión / Titularización</option>
+                        <option>Me interesa Premium Finance (Financiación de Primas)</option>
                     </select>
                     <textarea placeholder="Mensaje" style="width:100%;padding:10px;margin-bottom:10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;"></textarea>
                     <button type="submit" class="btn-primary" style="width: 100%;">Enviar solicitud</button>
